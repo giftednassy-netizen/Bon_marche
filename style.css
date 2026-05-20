@@ -1,0 +1,219 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/*Header et navigation*/
+header{
+    background-color: rgb(23,56,78);
+    padding: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo h1{
+    font-size: 1.5rem;
+    color: white;
+    margin: 0;
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+    gap : 25px; /*espacement entre les éléments enfants dans un conteneur*/
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 8px 12px;
+    transition: all 0.3s;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    background-color: rgb(255,255,255,0.2);
+    color: rgb(255, 107, 107);
+}
+/*pour les produits
+iframe{
+    margin: 0 auto;
+    padding: 0;
+    display: block;
+}
+    */
+nav ul li a.active {
+    background-color: rgb(255,255,255,0.2);
+    color: rgb(255, 107, 107);
+}
+
+main{
+    flex: 1; /* pour redimensionner les éléments */
+    background-color: rgb(218, 186, 197);
+    padding: 40px 20px;
+}
+/*Section hero message de bienvenue*/
+.hero{
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 40px 20px;
+    color: rgb(251, 248, 248);
+    border-radius: 15px;
+    background: linear-gradient(135deg, rgb(23, 56, 78), rgb(45, 78, 100));
+}
+.hero h2{
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+.hero p{
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+/*gille des produits*/
+.produit-grid{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.produit-grid h2{
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    color: rgb(23, 56, 78);
+}
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));/*auto-fill : remplir automatiquement les colonnes disponibles, minmax : définir une taille minimale et maximale pour les éléments de la grille*/
+    gap: 25px;
+    margin-bottom: 40px;
+}
+/*Carte de produit*/
+.produit-card{
+    background-color: rgb(255, 255, 255);
+    border-radius: 12px;
+    overflow: hidden;/*pour que les éléments enfants ne dépassent pas les bords arrondis de la carte*/
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;/*pour ajouter une animation lors du survol de la carte*/
+}
+.produit-card:hover{
+    transform: translateY(-5px);/*pour soulever légèrement la carte lors du survol*/
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);/*pour ajouter une ombre plus prononcée lors du survol*/
+}
+
+.produit-card a{
+    text-decoration: none;
+    color: inherit;/**/
+    display: block;
+}
+
+.produit-card img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;/**/
+    transition: transform 0.3s;/**/
+}
+.produit-card:hover img{
+    transform: scale(1.05);
+}
+.produit-card h3{
+    color: rgb(23, 56, 78);
+    padding: 15px 15px 5px;
+    font-size: 1.2rem;
+}
+.produit-card p{
+    color: rgb(102, 102, 102);
+    padding: 0 15px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+.produit-card .prix{
+    display: block;
+    color: rgb(255, 107, 107);
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 10px 15px 5px;
+}
+.promo{
+    text-align: center;
+    background-color: rgb(23, 56, 78);
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 800px;
+    margin: 20px auto 0;
+}
+.promo p{
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+.promo .slogan{
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: rgb(165, 42, 42);
+}
+
+footer{
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}
+footer p{
+    font-size: 1.5;
+}
+
+/*===========RESPONSIVE============*/
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .hero h2{
+        font-size: 1.5rem;
+    }
+    .grid-container{
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    .produit-card img {
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px){
+    nav ul{
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav ul li a {
+        font-size: 0.9rem;
+        padding: 5px 10px
+    }.hero{
+        padding: 20px;
+    }
+
+    .grid-container{
+        grid-template-columns: 1fr;
+    }
+}
